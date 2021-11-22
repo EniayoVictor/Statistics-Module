@@ -69,7 +69,18 @@ def standardDeviationFunction():
         standardDeviation = "{:.2f}".format(standardDeviation)
         print(standardDeviation)
     else:
-        print(f"Standard Deviation: {standardDeviation}")    
+        print(f"Standard Deviation: {standardDeviation}")   
+
+def varianceFunction():
+    numbersSum = sum(numbers)
+    numbersCount = len(numbers)
+    mean = numbersSum/numbersCount
+    absoluteMeanList = []
+    for number in numbers:
+        absoluteMean = number - mean
+        absoluteMeanList.append((abs(absoluteMean))**2)  
+    variance = (sum(absoluteMeanList))/numbersCount
+    print(variance)   
 
 def statisticsFunction():
     numberInput = input("""Enter a number
@@ -85,7 +96,8 @@ def statisticsFunction():
         3. Calculate Median
         4. Calculate Mean Deviation
         5. Calculate Standard Deviation
-        6. Perform all Functions
+        6. Calculate Variance
+        7. Perform all Functions
         Your Selection: """)
         if actionInput == "1":
             meanFunction()
@@ -98,6 +110,8 @@ def statisticsFunction():
         elif actionInput == "5":
             standardDeviationFunction()
         elif actionInput == "6":
+            varianceFunction()
+        elif actionInput == "7":
             meanFunction()
             modeFunction()
             medianFunction()
