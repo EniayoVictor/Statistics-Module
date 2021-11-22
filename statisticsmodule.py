@@ -1,4 +1,3 @@
-import statistics 
 import math
 
 numbers = []
@@ -57,6 +56,21 @@ def meanDeviationFunction():
     meanDeviation = (sum(absoluteMeanList))/numbersCount
     print(f"Mean Deviation: {meanDeviation}")
 
+def standardDeviationFunction():
+    numbersSum = sum(numbers)
+    numbersCount = len(numbers)
+    mean = numbersSum/numbersCount
+    absoluteMeanList = []
+    for number in numbers:
+        absoluteMean = number - mean
+        absoluteMeanList.append((abs(absoluteMean))**2)
+    standardDeviation = ((sum(absoluteMeanList))/numbersCount)**0.5
+    if type(standardDeviation) == float:
+        standardDeviation = "{:.2f}".format(standardDeviation)
+        print(standardDeviation)
+    else:
+        print(f"Standard Deviation: {standardDeviation}")    
+
 def statisticsFunction():
     numberInput = input("""Enter a number
     >>> """)
@@ -70,7 +84,8 @@ def statisticsFunction():
         2. Calculate Mode
         3. Calculate Median
         4. Calculate Mean Deviation
-        5. Perform all Functions
+        5. Calculate Standard Deviation
+        6. Perform all Functions
         Your Selection: """)
         if actionInput == "1":
             meanFunction()
@@ -81,6 +96,8 @@ def statisticsFunction():
         elif actionInput == "4":
             meanDeviationFunction()
         elif actionInput == "5":
+            standardDeviationFunction()
+        elif actionInput == "6":
             meanFunction()
             modeFunction()
             medianFunction()
